@@ -4,11 +4,11 @@
 
 This is PHP WCAP client library.
 
-* this is a simple PHP framework to make requests to a SUN Calendar server using WCAP protocol.
-* [http://docs.sun.com/app/docs/doc/819-4655 WCAP] protocol is a SUN standard. With WCAP, you can :
-** connect to a calendar server based on authentication
-** retrieve some events,
-** add, modify or delete some events or calendars
+ * this is a simple PHP framework to make requests to a SUN Calendar server using WCAP protocol.
+ * [http://docs.sun.com/app/docs/doc/819-4655 WCAP] protocol is a SUN standard. With WCAP, you can :
+  ** connect to a calendar server based on authentication
+  ** retrieve some events,
+  ** add, modify or delete some events or calendars
 
 = Details =
 
