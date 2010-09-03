@@ -13,22 +13,25 @@ This is PHP WCAP client library.
 = Details =
 
 Actual Wcap client class implements this methods :
-* login, logout(),
-* get_freebusy(),
-* fetchcomponents_by_range(),
-* get_all_time_zones(),
-* store_event(),
-* get_userprefs(),
-* get_calprops(),
-* gettime(),
-* search_calprops(),
-* search_calprops(),
-* list_subscribed(),
-* _list(),  (list is a reserved word)
-* ping(),
-* check_id(),
-* version(),
-* subscribe_calendars(),
-* unsubscribe_calendars()
-* import, export
+ * login, logout(),
+ * get_freebusy(),
+ * fetchcomponents_by_range(),
+ * get_all_time_zones(),
+ * store_event(),
+ * get_userprefs(),
+ * get_calprops(),
+ * gettime(),
+ * search_calprops(),
+ * search_calprops(),
+ * list_subscribed(),
+ * _list(),  (list is a reserved word)
+ * ping(),
+ * check_id(),
+ * version(),
+ * subscribe_calendars(),
+ * unsubscribe_calendars()
+ * import, export
 
+Misc :
+
+ * POST and GET Requests are make with CURL to the server and support HTTP and HTTPS protocol
