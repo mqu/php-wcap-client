@@ -1,4 +1,5 @@
 #summary php wcap client Home
+#labels Featured
 
 = Introduction =
 
