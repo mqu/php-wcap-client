@@ -1,0 +1,32 @@
+#summary API : WcapClient
+#labels API
+
+= WcapClient class =
+
+== properties ==
+ * protected $curl;
+ * protected $wcap_url;
+ * protected $session_id = null;
+ * protected $errno = 0;
+ * protected $tzid = 'Europe/Paris';
+
+== methods ==
+
+    * login, logout(),
+    * get_freebusy(),
+    * fetchcomponents_by_range(),
+    * get_all_time_zones(),
+    * store_event(),
+    * get_userprefs(),
+    * get_calprops(),
+    * gettime(),
+    * search_calprops(),
+    * search_calprops(),
+    * list_subscribed(),
+    * list(), (list is a reserved word)
+    * ping(),
+    * check_id(),
+    * version(),
+    * subscribe_calendars(),
+    * unsubscribe_calendars()
+    * import, export 
