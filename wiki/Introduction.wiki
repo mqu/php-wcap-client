@@ -2,6 +2,33 @@
 
 = Introduction =
 
-PHP WCAP client library
+This is PHP WCAP client library.
+
+* this is a simple PHP framework to make requests to a SUN Calendar server using WCAP protocol.
+* [http://docs.sun.com/app/docs/doc/819-4655 WCAP] protocol is a SUN standard. With WCAP, you can :
+** connect to a calendar server based on authentication
+** retrieve some events,
+** add, modify or delete some events or calendars
 
 = Details =
+
+Actual Wcap client class implements this methods :
+* login, logout(),
+* get_freebusy(),
+* fetchcomponents_by_range(),
+* get_all_time_zones(),
+* store_event(),
+* get_userprefs(),
+* get_calprops(),
+* gettime(),
+* search_calprops(),
+* search_calprops(),
+* list_subscribed(),
+* _list(),  (list is a reserved word)
+* ping(),
+* check_id(),
+* version(),
+* subscribe_calendars(),
+* unsubscribe_calendars()
+* import, export
+
