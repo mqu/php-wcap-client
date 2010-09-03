@@ -1,5 +1,5 @@
 #summary php wcap client Home
-#labels Featured
+#labels description,misc
 
 = Introduction =
 
@@ -36,3 +36,4 @@ Actual Wcap client class implements this methods :
 Misc :
 
  * POST and GET Requests are make with CURL to the server and support HTTP and HTTPS protocol
+ * XML return data are parsed with php native SimpleXml functions.
