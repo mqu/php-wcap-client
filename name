@@ -1,0 +1,15 @@
+RoomInfoList.php:			$list[$room->capacity()][] = $room->name();
+RoomInfoList.php:			$list[] = $room->capacity();
+RoomInfoList.php:			$list[] = $room->name();
+RoomInfoList.php:				$list[] = $room->name();
+RoomInfoList.php:			elseif($filter['type'] == $room->type())
+RoomInfoList.php:				$list[] = $room->name();
+RoomInfoList.php:			$list[] = $room->type();
+RoomInfoList.php:			$list[$room->type()][] = $room->name();
+RoomInfoList.php:					if($room->capacity() == $size) $list[] = $room; break;
+RoomInfoList.php:				case '>':   if($room->capacity() >  $size) $list[] = $room; break;
+RoomInfoList.php:				case '<':   if($room->capacity() <  $size) $list[] = $room; break;
+RoomInfoList.php:				case '>=':  if($room->capacity() >= $size) $list[] = $room; break;
+RoomInfoList.php:				case '<=':  if($room->capacity() <= $size) $list[] = $room; break;
+RoomInfoList.php:			if($room->type() == $type)
+RoomInfoList.php:			$txt .= $room->__toString();
