@@ -1,0 +1,126 @@
+<?php
+
+class WeekCalendarGrid {
+	protected $name;
+	protected $granularity;
+	protected $data;
+	protected $info = array();
+
+	public function __construct($week, $name, $granularity=2){
+		$this->events = array();
+		$this->name = $name;
+		$this->week = $week;
+		$this->data = array();
+		$this->granularity = $granularity;
+	}
+	
+	public function set_info($info){
+		$this->info = $info;
+	}
+
+	public function get_info(){
+		return $this->info;
+	}
+
+	public function add_event($ev){
+
+		if(!$this->event_in_week($ev, $this->week)){
+			echo "<pre> ev not in week </pre>\n";
+			return;
+		}
+		$this->events[] = $ev;
+
+		$time = $ev->start();
+		$week = Date::week_number($time);
+
+
+		$day_number = Date::week_day_number($time);
+
+		# fill an array with each event ;
+		# the array is divided in blocks
+		# granularity is 1/n of an hour
+		# step = 1 hour / granularity
+		# len = ev->lenght(in minutes) / step
+		$step = $this->step();
+
+		$pos = $this->time_to_pos($time);
+		$len = intval($ev->length()/60) / $step;
+		$trace = false;
+
+		if($week != $this->week || $ev->length_in_days()>1){
+			$trace = true;
+			echo "<pre>\n"; echo "ev:" ; print_r($ev) ; 
+			$diff = $this->week - $week;
+			echo "diff = $diff\n";
+			echo "len = $len\n";
+			echo "day_number = $day_number\n";
+			echo "pos = $pos\n";
+			printf("ev->len() : %d, %d\n", $ev->length_in_days(), $ev->length_in_hours());
+
+
+			echo "</pre>\n";
+		}
+
+		# for event len, fill each cells of the array.
+		for($i=0 ; $i<$len ; $i++){
+			$this->data[$day_number + intval($i/(24*$this->granularity()))][$pos+($i%(24*$this->granularity()))] = $ev;
+			if($trace){
+				echo "<pre>\n";
+				printf("i = $i ; idx1 = %s, idx2 = %d\n", $day_number + intval($i/24), $pos+($i%24));
+				echo "</pre>\n";
+			}
+		}
+	}
+
+	public function event_in_week($ev, $week){
+
+		$time = $ev->start();
+		$len = $ev->length();
+
+		$w_time = Date::week_to_timestamp($week);  # timestamp for week number
+		$w_len = 60*60*24*7; # week length in seconds
+
+		if($time >= $w_time && $time < ($w_time+$w_len))
+			return true;
+
+		if(($time+$len) >= $w_time && ($time+$len) < ($w_time+$w_len))
+			return true;
+
+		return false;
+	}
+
+	# number of elements for an hour.
+	public function granularity(){
+		return $this->granularity;
+	}
+
+	# this is in fact len of an element in minutes.
+	protected function step(){
+		return intval(60 / $this->granularity());
+	}
+
+	public function time_to_pos($time){
+		return $this->granularity()*Date::hour($time) + intval(Date::minute($time) / $this->step());
+	}
+
+	# reverse of time_to_pos
+	public function pos_to_hour($pos){
+		return intval($pos / $this->granularity());
+	}
+
+	public function pos_to_minute($pos){
+		return intval($pos % $this->granularity());
+	}
+
+	public function name(){
+		return $this->name;
+	}
+
+	public function get_data($d, $pos){
+		if(isset($this->data[$d][$pos]))
+			return $this->data[$d][$pos];
+		else
+			return false;
+	}
+}
+?>
